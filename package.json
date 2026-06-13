@@ -1,0 +1,15 @@
+{
+  "name": "altairnotes-2",
+  "version": "1.0.0",
+  "description": "переписываю приложение записи Альтаира на TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "cd server && npm run dev"
+  },
+  "author": "w3b-c0d3r",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^10.0.3"
+  }
+}
