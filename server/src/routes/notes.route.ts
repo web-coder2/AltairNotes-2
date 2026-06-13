@@ -2,7 +2,7 @@ import router, { Request, Response, Router } from "express"
 import axios from "axios"
 import dayjs from "dayjs"
 
-import { createNote, allNotes, filterNote } from "../dtos/notes.dto"
+import { createNote, allNotes, filterNote, fullNote } from "../dtos/notes.dto"
 import notesModels from "../models/notes.models"
 
 const notesRouter: Router = router()
@@ -33,7 +33,7 @@ notesRouter.get('/getOne', async (req: Request, res: Response) => {
     try {
         const queryFilter = req.query as unknown as filterNote
 
-        const filterNote = await notesModels.find({
+        const filterNote: fullNote | null = await notesModels.findOne({
             _id: queryFilter._id,
             title: queryFilter.title
         })

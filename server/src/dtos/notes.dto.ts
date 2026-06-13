@@ -17,3 +17,7 @@ export interface filterNote {
     _id: string,
     title: string
 }
+
+export interface fullNote extends allNotes {
+    description: string
+}
