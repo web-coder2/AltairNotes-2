@@ -33,10 +33,7 @@ notesRouter.get('/getOne', async (req: Request, res: Response) => {
     try {
         const queryFilter = req.query as unknown as filterNote
 
-        const filterNote: fullNote | null = await notesModels.findOne({
-            _id: queryFilter._id,
-            title: queryFilter.title
-        })
+        const filterNote: fullNote | null = await notesModels.findOne({_id: queryFilter._id})
 
         res.status(200).json({ data: filterNote })
     } catch (e: unknown) {
