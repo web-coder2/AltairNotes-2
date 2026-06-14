@@ -38,25 +38,6 @@ notesRouter.get('/getOne', async (req: Request, res: Response) => {
 
         const filterNote: fullNote | null = await notesModels.findOne({_id: queryFilter._id})
 
-        const commentsByNote = await commentsModels.find({noteId: filterNote?._id})
-        const prepaidComements: createCommentReq[] = []
-
-        commentsByNote.forEach((comment) => {
-            prepaidComements.push({
-                noteId: comment.noteId.toString(),
-                parrentCommentId: comment?.parrentCommentId?.toString() ?? null,
-                name: comment.name?.toString() ?? '',
-                comment: comment.comment?.toString() ?? '',
-                likes: comment.likes ?? 0,
-                replyLvl: comment.replyLvl ?? 0,
-                datedAt: comment?.datedAt ? new Date(comment.datedAt) : new Date()
-            })
-        })
-
-        if (filterNote) {
-            filterNote.comments = prepaidComements
-        }
-
         res.status(200).json({ data: filterNote })
     } catch (e: unknown) {
         console.log(`ошибка получения записи ${e}`)

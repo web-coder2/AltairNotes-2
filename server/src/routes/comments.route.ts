@@ -2,7 +2,7 @@ import router, { Request, Response, Router } from "express"
 import axios from "axios"
 import dayjs from "dayjs"
 
-import { createCommentReq, getCommentIdReq } from "../dtos/comments.dto"
+import { createCommentReq, getCommentIdReq, getCommentsByNoteReq } from "../dtos/comments.dto"
 
 import commentsModels from "../models/comments.models"
 
@@ -36,6 +36,31 @@ commentRouter.post('/like', async (req: Request, res: Response) => {
     } catch (e: unknown) {
         console.log(e)
         res.status(500).json({err: e})
+    }
+})
+
+commentRouter.get('/getAll', async (req: Request, res: Response) => {
+    try {
+        const comments: createCommentReq[] = await commentsModels.find()
+        res.status(200).json({ data: comments })
+    } catch (e: unknown) {
+        console.log(e)
+        res.status(500).json({ err: e })
+    }
+})
+
+commentRouter.get('/getByNote', async (req: Request, res: Response) => {
+    try {
+        const queryData = req.query as unknown as getCommentsByNoteReq
+
+        const comments: createCommentReq[] = await commentsModels.find({
+            noteId: queryData.noteId
+        })
+
+        res.status(200).json({ data: comments })
+    } catch (e: unknown) {
+        console.log(e)
+        res.status(500).json({ err: e })
     }
 })
 
