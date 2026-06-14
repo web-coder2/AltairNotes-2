@@ -6,7 +6,7 @@ import cors from "cors"
 import dotenv from 'dotenv'
 import mongoose from "mongoose"
 
-
+import commentRouter from "./routes/comments.route"
 import notesRouter from "./routes/notes.route"
 
 dotenv.config()
@@ -25,6 +25,7 @@ app.use(cors({ origin: '*' }))
 
 // ПОДКЛЮЧЕНИЕ МОДУЛЕЙ
 app.use('/api/notes', notesRouter)
+app.use('/api/comments', commentRouter)
 
 async function startConnectToDB() {
     try {

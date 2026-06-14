@@ -1,3 +1,5 @@
+import { createCommentReq } from "./comments.dto"
+
 export interface createNote {
     title: string,
     shortDescription: string,
@@ -7,6 +9,7 @@ export interface createNote {
 }
 
 export interface allNotes {
+    _id: string,
     title: string,
     shortDescription: string,
     date: string,
@@ -18,5 +21,6 @@ export interface filterNote {
 }
 
 export interface fullNote extends allNotes {
-    description: string
+    description: string,
+    comments: createCommentReq[]
 }

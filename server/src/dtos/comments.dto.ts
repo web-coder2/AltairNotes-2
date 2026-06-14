@@ -3,11 +3,15 @@ export interface createCommentReq {
     parrentCommentId: string | null,
     name: string,
     comment: string,
-    likes: 0,
-    replyLvl: 0,
+    likes: number,
+    replyLvl: number,
     datedAt: Date
 }
 
 export interface getCommentsByNoteReq {
     noteId: string
+}
+
+export interface getCommentIdReq {
+    _id: string
 }
