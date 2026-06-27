@@ -1,40 +1,41 @@
 <template>
 
-    <Menubar :model="items">
-        <template #start>
-            <h3>AltairNotes2</h3>
-        </template>
-        <template #item="{ item, props, hasSubmenu }">
-            <router-link v-slot="{ href, navigate }" :to="item.to" custom>
-                <a v-ripple :href="href" v-bind="props.action" @click="navigate">
-                    <span>{{ item.label }}</span>
-                </a>
-            </router-link>
-        </template>
-        <template #end>
-            <div class="flex items-center gap-2">
-                <InputText placeholder="Search" type="text" class="w-32 sm:w-auto" />
-            </div>
-        </template>
-    </Menubar>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <router-link class="navbar-brand" :to="'/'">AltairNotes2</router-link>
 
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li v-for="item in items" class="nav-item">
+                <router-link class="nav-link" :to="item.to">{{ item.label }}</router-link>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid mt-5">
     <slot />
+</div>
+
+
 </template>
 
 <script>
 
-import Menubar from 'primevue/menubar'
-
-export default {
-    data() {
-        return {
-            items: [
-                { label: 'index', to: '/' },
-                { label: 'about', to: '/about' },
-                { label: 'notes', to: '/notes' },
-            ]
+    export default {
+        data() {
+            return {
+                items: [
+                    { label: 'index', to: '/' },
+                    { label: 'about', to: '/about' },
+                    { label: 'notes', to: '/notes' },
+                ]
+            }
         }
     }
-}
 
 </script>
