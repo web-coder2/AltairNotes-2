@@ -17,10 +17,33 @@
     </div>
 </nav>
 
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-5 mb-5">
     <slot />
 </div>
 
+
+<footer class="bg-dark text-light mt-auto py-3">
+    <div class="d-flex justify-content-between align-items-end container-fluid">
+        <div>
+            <h6 class="text-warning">Разработчики форума</h6>
+            <p>Web-coder - Fronted</p>
+            <p>w3b-c0d3r - Backend</p>
+            <p>assassin-coder - Designer(drugs)</p>
+            <p>hard-coder - FullStack</p>
+        </div>
+        <div>
+            <h1 class="text-center">ALTAIR_NOTES_2</h1>
+            <p class="text-center text-warning">&copy; 2026 Все права защищены</p>
+        </div>
+        <div>
+            <h6 class="text-warning">контакты и прочее</h6>
+            <p>Email: <a href="http://gmail.com">yasher18@bk.ru</a></p>
+            <p>Telegran: <a href="http://telegram.com">@Yasheriza18</a></p>
+            <p>Youtube: <a href="http://youtube.com">web-coder.tube</a></p>
+            <p>GitHub: <a href="http://github.com">web-coder2</a></p>
+        </div>
+    </div>
+</footer>
 
 </template>
 
