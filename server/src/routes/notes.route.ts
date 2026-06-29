@@ -12,7 +12,7 @@ const notesRouter: Router = router()
 
 notesRouter.post('/create', async (req: Request, res: Response) => {
     try {
-        const newNote: createNote = req.body
+        const newNote: createNote = req.body.createNote
         const newNoteModel = new notesModels(newNote)
         const result = await newNoteModel.save()
         res.status(200).json({ result: result })
